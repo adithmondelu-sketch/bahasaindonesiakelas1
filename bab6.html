@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Bab 6: Temanku Berbeda</title>
+  <style>
+    body { font-family: Arial, sans-serif; background: #f9f9f9; padding: 20px; }
+    h1 { color: #2c3e50; }
+    .materi, .latihan { margin-bottom: 30px; }
+    .gambar { width: 200px; cursor: pointer; margin: 10px; }
+    button { margin: 5px; padding: 10px; }
+    .nav { margin-top: 20px; }
+    .nav a { margin-right: 10px; padding: 10px; background:#3498db; color:white; text-decoration:none; border-radius:8px; }
+    .nav a:hover { background:#2980b9; }
+  </style>
+</head>
+<body>
+  <h1>Bab 6: Temanku Berbeda</h1>
+  
+  <div class="materi">
+    <p>Setiap teman punya perbedaan. Semua harus dihargai.</p>
+  </div>
+
+  <div class="latihan">
+    <h2>Latihan</h2>
+    <p>Apa sikap yang baik terhadap teman berbeda?</p>
+    <button onclick="jawab('hargai')">Menghargai</button>
+    <button onclick="jawab('ejek')">Mengejek</button>
+    <p id="skor">Skor: 0</p>
+  </div>
+
+  <div class="nav">
+    <a href="index.html">Kembali ke Menu</a>
+    <a href="nilai.html">Lihat Nilai</a>
+  </div>
+
+  <script>
+    let skor=0;
+    function playSound(file){ new Audio(file).play(); }
+    function jawab(ans){
+      if(ans==='hargai'){ alert("Bagus!"); skor+=10; }
+      else{ alert("Kurang tepat!"); skor-=5; }
+      document.getElementById('skor').innerText="Skor: "+skor;
+      localStorage.setItem("bab6", skor);
+    }
+  </script>
+</body>
+</html>

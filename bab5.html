@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Bab 5: Teman Baru</title>
+  <style>
+    body{ font-family:Arial,sans-serif; background:#f9f9f9; padding:20px; }
+    h1{ color:#2c3e50; }
+    .materi,.latihan{ margin-bottom:30px; }
+    button{ margin:5px; padding:10px; }
+    .nav{ margin-top:20px; }
+    .nav a{ margin-right:10px; padding:10px; background:#3498db; color:white; text-decoration:none; border-radius:8px; }
+    .nav a:hover{ background:#2980b9; }
+  </style>
+</head>
+<body>
+  <h1>Bab 5: Teman Baru</h1>
+  
+  <div class="materi">
+    <p>Di sekolah kita bertemu teman baru. Menyapa dengan ramah membuat senang.</p>
+  </div>
+
+  <div class="latihan">
+    <h2>Latihan</h2>
+    <p>Bagaimana cara menyapa teman baru?</p>
+    <button onclick="jawab('sapa')">Mengucapkan Halo</button>
+    <button onclick="jawab('diam')">Diam saja</button>
+    <p id="skor">Skor: 0</p>
+  </div>
+
+  <div class="nav">
+    <a href="index.html">Kembali ke Menu</a>
+    <a href="nilai.html">Lihat Nilai</a>
+  </div>
+
+  <script>
+    let skor=0;
+    function jawab(ans){
+      if(ans==='sapa'){ alert("Bagus! Menyapa dengan ramah adalah cara baik."); skor+=10; }
+      else{ alert("Kurang tepat! Teman baru senang kalau kita menyapa."); skor-=5; }
+      document.getElementById('skor').innerText="Skor: "+skor;
+      localStorage.setItem("bab5", skor);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Bab 1: Bunyi Apa?</title>
+  <style>
+    body { font-family: Comic Sans MS, Arial, sans-serif; background:#f9f9f9; padding:20px; }
+    h1 { color:#2c3e50; }
+    .materi,.latihan { margin-bottom:30px; }
+    .gambar { width:150px; cursor:pointer; margin:10px; }
+    button { margin:5px; padding:10px; }
+    .nav { margin-top:20px; }
+    .nav a { margin-right:10px; padding:10px; background:#3498db; color:white; text-decoration:none; border-radius:8px; }
+    .nav a:hover { background:#2980b9; }
+  </style>
+</head>
+<body>
+  <h1>Bab 1: Bunyi Apa?</h1>
+  
+  <div class="materi">
+    <p><strong>Duk! Duk! Duk!</strong> Itu bola Boni. Bola Boni biru.</p>
+    <img src="images/bola.png" class="gambar" onclick="playSound('sounds/bola.mp3')" alt="Bola Boni">
+    <img src="images/batu.png" class="gambar" onclick="playSound('sounds/batu.mp3')" alt="Batu">
+    <img src="images/sapi.png" class="gambar" onclick="playSound('sounds/sapi.mp3')" alt="Sapi">
+  </div>
+
+  <div class="latihan">
+    <h2>Latihan 1</h2>
+    <p>Apa warna bola Boni?</p>
+    <button onclick="jawab('biru')">Biru</button>
+    <button onclick="jawab('merah')">Merah</button>
+    <p id="skor">Skor: 0</p>
+  </div>
+
+  <div class="latihan">
+    <h2>Latihan 2</h2>
+    <p>Bola Boni berbunyi apa?</p>
+    <button onclick="jawab2('duk')">Duk Duk Duk</button>
+    <button onclick="jawab2('tok')">Tok Tok Tok</button>
+    <p id="skor2">Skor: 0</p>
+  </div>
+
+  <div class="latihan">
+    <h2>Latihan Huruf B</h2>
+    <button onclick="playSound('sounds/ba.mp3')">ba</button>
+    <button onclick="playSound('sounds/be.mp3')">be</button>
+    <button onclick="playSound('sounds/bi.mp3')">bi</button>
+    <button onclick="playSound('sounds/bo.mp3')">bo</button>
+    <button onclick="playSound('sounds/bu.mp3')">bu</button>
+  </div>
+
+  <div class="nav">
+    <a href="index.html">🏠 Kembali ke Menu</a>
+    <a href="nilai.html">📊 Lihat Nilai</a>
+  </div>
+
+  <script>
+    let skor=0, skor2=0;
+    function playSound(file){ new Audio(file).play(); }
+    function jawab(ans){
+      if(ans==='biru'){ alert("Benar!"); skor+=10; }
+      else{ alert("Salah!"); skor-=5; }
+      document.getElementById('skor').innerText="Skor: "+skor;
+      localStorage.setItem("bab1", skor);
+    }
+    function jawab2(ans){
+      if(ans==='duk'){ alert("Benar!"); skor2+=10; }
+      else{ alert("Salah!"); skor2-=5; }
+      document.getElementById('skor2').innerText="Skor: "+skor2;
+      // gabungkan skor latihan 1 + 2
+      localStorage.setItem("bab1", skor+skor2);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Selamat!</title>
+  <style>
+    body { font-family: Comic Sans MS, Arial, sans-serif; background:#fdfdfd; padding:30px; text-align:center; }
+    h1 { color:#27ae60; font-size:50px; margin-bottom:20px; }
+    p { font-size:20px; }
+    .stars { font-size:50px; color:#f1c40f; margin:20px 0; }
+    .confetti { font-size:60px; animation: bounce 1s infinite alternate; }
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-20px); }
+    }
+    .nav { margin-top:30px; }
+    .nav a { margin:0 10px; padding:10px 20px; background:#3498db; color:white; text-decoration:none; border-radius:8px; font-size:18px; }
+    .nav a:hover { background:#2980b9; }
+  </style>
+</head>
+<body>
+  <h1>🎉 SELAMAT! 🎉</h1>
+  <p>Kamu sudah belajar dengan baik dan mendapat skor tinggi!</p>
+  <div class="stars" id="stars"></div>
+  <div class="confetti">🎊🎊🎊</div>
+
+  <div class="nav">
+    <a href="index.html">🏠 Kembali ke Menu</a>
+    <a href="nilai.html">📊 Lihat Nilai</a>
+  </div>
+
+  <script>
+    // Ambil total skor dari localStorage
+    let total=0;
+    for(let i=1;i<=8;i++){
+      let skor=localStorage.getItem("bab"+i) || 0;
+      total+=parseInt(skor);
+    }
+
+    // Tentukan jumlah bintang (1 bintang tiap 160 poin)
+    let starsCount=Math.floor(total/160);
+    let starsDiv=document.getElementById("stars");
+    let i=0;
+    function showStar(){
+      if(i<starsCount){
+        starsDiv.innerText+="⭐";
+        i++;
+        setTimeout(showStar,500);
+      }
+    }
+
+    // Hanya tampilkan bintang kalau skor >= 480
+    if(total>=480){
+      showStar();
+    } else {
+      document.querySelector("h1").innerText="Terus Semangat!";
+      document.querySelector("p").innerText="Kamu sudah berusaha, ayo coba lagi untuk skor lebih tinggi!";
+      document.querySelector(".confetti").innerText="💪😊";
+    }
+  </script>
+</body>
+</html>

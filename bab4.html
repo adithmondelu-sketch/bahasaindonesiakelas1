@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Bab 4: Aku Bisa!</title>
+  <style>
+    body{ font-family:Arial,sans-serif; background:#f9f9f9; padding:20px; }
+    h1{ color:#2c3e50; }
+    .materi,.latihan{ margin-bottom:30px; }
+    button{ margin:5px; padding:10px; }
+    .nav{ margin-top:20px; }
+    .nav a{ margin-right:10px; padding:10px; background:#3498db; color:white; text-decoration:none; border-radius:8px; }
+    .nav a:hover{ background:#2980b9; }
+  </style>
+</head>
+<body>
+  <h1>Bab 4: Aku Bisa!</h1>
+  
+  <div class="materi">
+    <p>Setiap anak bisa melakukan sesuatu. Ada yang menggambar, bernyanyi, berlari.</p>
+  </div>
+
+  <div class="latihan">
+    <h2>Latihan</h2>
+    <p>Sebutkan hal yang bisa kamu lakukan!</p>
+    <input type="text" id="jawaban" placeholder="Tulis di sini...">
+    <button onclick="jawab()">Kirim</button>
+    <p id="skor">Skor: 0</p>
+  </div>
+
+  <div class="nav">
+    <a href="index.html">Kembali ke Menu</a>
+    <a href="nilai.html">Lihat Nilai</a>
+  </div>
+
+  <script>
+    let skor=0;
+    function jawab(){
+      let isi=document.getElementById('jawaban').value;
+      if(isi.trim()!==""){ alert("Bagus! Kamu bisa "+isi); skor+=10; }
+      else{ alert("Tulis dulu!"); skor-=5; }
+      document.getElementById('skor').innerText="Skor: "+skor;
+      localStorage.setItem("bab4", skor);
+    }
+  </script>
+</body>
+</html>

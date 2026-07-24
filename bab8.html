@@ -1,0 +1,19 @@
+<script>
+  let skor=0;
+  function jawab(){
+    let isi=document.getElementById('jawaban').value;
+    if(isi.trim()!==""){ alert("Bagus! Di sekitar rumah ada "+isi); skor+=10; }
+    else{ alert("Tulis dulu!"); skor-=5; }
+    document.getElementById('skor').innerText="Skor: "+skor;
+    localStorage.setItem("bab8", skor);
+
+    // Setelah jawab, cek total skor semua bab
+    let total=0;
+    for(let i=1;i<=8;i++){
+      let s=localStorage.getItem("bab"+i) || 0;
+      total+=parseInt(s);
+    }
+    // Jika sudah selesai bab8, langsung ke selamat.html
+    setTimeout(()=>{ window.location.href="selamat.html"; },1000);
+  }
+</script>

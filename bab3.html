@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Bab 3: Awas Kuman!</title>
+  <style>
+    body{ font-family:Arial,sans-serif; background:#f9f9f9; padding:20px; }
+    h1{ color:#2c3e50; }
+    .materi,.latihan{ margin-bottom:30px; }
+    .gambar{ width:200px; cursor:pointer; margin:10px; }
+    button{ margin:5px; padding:10px; }
+    .nav{ margin-top:20px; }
+    .nav a{ margin-right:10px; padding:10px; background:#3498db; color:white; text-decoration:none; border-radius:8px; }
+    .nav a:hover{ background:#2980b9; }
+  </style>
+</head>
+<body>
+  <h1>Bab 3: Awas Kuman!</h1>
+  
+  <div class="materi">
+    <p>Kuman bisa membuat kita sakit. Rajinlah cuci tangan!</p>
+    <img src="images/cuci_tangan.png" class="gambar" onclick="playSound('sounds/cuci.mp3')" alt="Cuci Tangan">
+  </div>
+
+  <div class="latihan">
+    <h2>Latihan</h2>
+    <p>Mana kebiasaan yang baik untuk mencegah kuman?</p>
+    <button onclick="jawab('baik')">Mencuci tangan sebelum makan</button>
+    <button onclick="jawab('buruk')">Makan tanpa mencuci tangan</button>
+    <p id="skor">Skor: 0</p>
+  </div>
+
+  <div class="nav">
+    <a href="index.html">Kembali ke Menu</a>
+    <a href="nilai.html">Lihat Nilai</a>
+  </div>
+
+  <script>
+    let skor=0;
+    function playSound(file){ new Audio(file).play(); }
+    function jawab(ans){
+      if(ans==='baik'){ alert("Benar!"); skor+=10; }
+      else{ alert("Salah!"); skor-=5; }
+      document.getElementById('skor').innerText="Skor: "+skor;
+      localStorage.setItem("bab3", skor);
+    }
+  </script>
+</body>
+</html>

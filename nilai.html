@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Ringkasan Nilai</title>
+  <style>
+    body { font-family: Comic Sans MS, Arial, sans-serif; background:#fdfdfd; padding:30px; text-align:center; }
+    h1 { color:#2c3e50; margin-bottom:20px; }
+    table { border-collapse:collapse; width:70%; margin:auto; margin-bottom:30px; }
+    th,td { border:1px solid #ccc; padding:10px; text-align:center; }
+    th { background:#3498db; color:white; }
+    td { background:#ecf0f1; }
+    .progress { width:70%; background:#ddd; border-radius:20px; margin:20px auto; overflow:hidden; }
+    .progress-bar { height:25px; background:#2ecc71; border-radius:20px; text-align:center; color:white; font-weight:bold; width:0%; transition:width 2s ease; }
+    .stars { font-size:40px; color:#f1c40f; margin-top:20px; }
+    .nav { margin-top:20px; }
+    .nav a { margin:0 10px; padding:10px; background:#3498db; color:white; text-decoration:none; border-radius:8px; }
+    .nav a:hover { background:#2980b9; }
+  </style>
+</head>
+<body>
+  <h1>🎉 Ringkasan Nilai 🎉</h1>
+  <table>
+    <tr><th>Bab</th><th>Nilai</th></tr>
+    <tr><td>Bab 1</td><td id="b1"></td></tr>
+    <tr><td>Bab 2</td><td id="b2"></td></tr>
+    <tr><td>Bab 3</td><td id="b3"></td></tr>
+    <tr><td>Bab 4</td><td id="b4"></td></tr>
+    <tr><td>Bab 5</td><td id="b5"></td></tr>
+    <tr><td>Bab 6</td><td id="b6"></td></tr>
+    <tr><td>Bab 7</td><td id="b7"></td></tr>
+    <tr><td>Bab 8</td><td id="b8"></td></tr>
+    <tr><th>Total</th><th id="total"></th></tr>
+  </table>
+
+  <div class="progress">
+    <div id="progress-bar" class="progress-bar">0%</div>
+  </div>
+
+  <div id="stars" class="stars"></div>
+
+  <div class="nav">
+    <a href="index.html">🏠 Kembali ke Menu</a>
+  </div>
+
+  <script>
+    let total=0;
+    for(let i=1;i<=8;i++){
+      let skor=localStorage.getItem("bab"+i) || 0;
+      document.getElementById("b"+i).innerText=skor;
+      total+=parseInt(skor);
+    }
+    document.getElementById("total").innerText=total;
+
+    // Progress bar animasi
+    let max=640;
+    let percent=Math.min(Math.round((total/max)*100),100);
+    let bar=document.getElementById("progress-bar");
+    setTimeout(()=>{ bar.style.width=percent+"%"; bar.innerText=percent+"%"; },200);
+
+    // Bintang animasi (1 bintang tiap 160 poin)
+    let starsCount=Math.floor(total/160);
+    let starsDiv=document.getElementById("stars");
+    let i=0;
+    function showStar(){
+      if(i<starsCount){
+        starsDiv.innerText+="⭐";
+        i++;
+        setTimeout(showStar,500);
+      }
+    }
+    showStar();
+  </script>
+</body>
+</html>
