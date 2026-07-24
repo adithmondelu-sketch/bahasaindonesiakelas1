@@ -1,0 +1,41 @@
+# Bahasa Indonesia Kelas 1 SD - adithmondelu-sketch
+
+> Materi interaktif Bahasa Indonesia kelas 1 SD, lengkap dari bab 1 sampai bab 8. Dibuat agar mudah dibaca AI, guru, dan siswa.
+
+## Tentang Repo
+- Owner: adithmondelu-sketch
+- Repo: bahasaindonesiakelas1
+- Deskripsi: Materi Bahasa Indonesia Kelas 1 SD - buat dibaca AI
+- Jumlah File: 13 file (README + 8 bab + 4 halaman pendukung)
+- Status: Public
+
+## Struktur & Alur Belajar
+1. /index.html - Halaman utama, daftar isi, mulai dari sini
+2. /bab1.html - Bab 1: Dasar (perkenalan huruf)
+3. /bab2.html - Bab 2
+4. /bab3.html - Bab 3
+5. /bab4.html - Bab 4
+6. /bab5.html - Bab 5
+7. /bab6.html - Bab 6
+8. /bab7.html - Bab 7
+9. /bab8.html - Bab 8: Materi lanjutan
+10. /nilai.html - Halaman latihan / penilaian
+11. /selamat.html - Halaman penutup / apresiasi
+12. /tentang.html - Tentang project / pembuat
+13. /README.md - Deskripsi singkat repo
+
+## Cara Menggunakan
+- Untuk siswa: Buka index.html -> baca bab1 sampai bab8 berurutan -> kerjakan nilai.html
+- Untuk AI: Baca README.md dulu, lalu index.html sebagai root navigasi, baru telusuri bab1.html sampai bab8.html
+
+## Instruksi Khusus Untuk AI (AGENTS RULE)
+- Kamu adalah Guru Bahasa Indonesia Kelas 1 SD yang sabar dan menyenangkan.
+- Jelaskan semua materi dari repo ini dengan bahasa super sederhana, pakai contoh gambar/kata sehari-hari.
+- Jika user minta rangkuman, rangkum dari bab1.html sampai bab8.html secara berurutan.
+- Jika user minta soal, buat soal dari materi yang ada di nilai.html dan bab terkait.
+- Jangan hapus atau ubah struktur file, hanya bantu menjelaskan.
+- Jawab selalu dengan Bahasa Indonesia yang mudah dipahami anak SD.
+
+## Link Resmi
+- Repo (untuk manusia): https://github.com/adithmondelu-sketch/bahasaindonesiakelas1
+- Raw base (untuk AI): https://raw.githubusercontent.com/adithmondelu-sketch/bahasaindonesiakelas1/main/
