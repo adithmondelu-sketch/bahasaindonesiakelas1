@@ -1,57 +1,35 @@
 <!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bab 2 - Bahasa Indonesia Kelas 1</title>
-<link rel="manifest" href="manifest.json">
+<html lang="id"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Bab 2 - Ayo Bermain!</title><link rel="manifest" href="manifest.json">
 <style>
-  body{font-family:'Nunito',sans-serif;background:#fef9ef;margin:0;padding:0}
-  .hero{position:relative;height:45vh;background:url('bab2.png') center/cover no-repeat;display:flex;align-items:end;justify-content:center}
-  .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.6),transparent)}
-  .hero h1{position:relative;z-index:2;color:white;font-size:2.2rem;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.5);margin-bottom:20px}
-  .container{max-width:900px;margin:-30px auto 0;background:white;border-radius:24px;box-shadow:0 10px 30px rgba(0,0,0,.1);padding:24px;position:relative;z-index:3}
-  .card{background:#fffbe6;border:2px dashed #f5c518;border-radius:16px;padding:16px;margin:16px 0}
-  .btn-audio{background:#4f46e5;color:white;border:none;padding:8px 14px;border-radius:20px;cursor:pointer;margin:4px;font-weight:bold}
-  .btn-audio.missing{background:#ccc}
-  .latihan{background:#e0f2fe;border-left:5px solid #0ea5e9;padding:12px;border-radius:8px;margin:12px 0}
-  .progress-bar{height:8px;background:#eee;border-radius:4px;overflow:hidden;margin:10px 0}
-  .progress{height:100%;background:linear-gradient(90deg,#22c55e,#16a34a);width:0%;transition:width .5s}
-  img.materi{max-width:160px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.1);margin:8px}
-  .grid-gambar{display:flex;flex-wrap:wrap;gap:10px}
-</style>
-</head>
-<body>
-<div class="hero"><h1>Bab 2<br>Ayo Bermain!</h1></div>
-<div class="container">
-  <div style="display:flex;justify-content:space-between;align-items:center">
-    <a href="index.html" style="text-decoration:none">⬅️ Kembali</a>
-    <button onclick="saveProgress(2)" style="background:#22c55e;color:white;border:none;padding:8px 16px;border-radius:20px">✅ Tandai Selesai</button>
-  </div>
-  <div class="progress-bar"><div id="progress" class="progress"></div></div>
-  <h2>Isi Lengkap Bab 2 - Ayo Bermain!</h2><div class='card'><p>Konten full PDF hal 27-54 sudah disiapkan. Gambar: hujan.png, hijau.png, cabai.png, hati.png, cecak.png, gajah.png, kelinci.png, caca.png, cika.png</p><div class='grid-gambar'><img src='caca.png' class='materi' onerror="this.src='bab2.png'"><img src='cika.png' class='materi' onerror="this.src='bab2.png'"><img src='hujan.png' class='materi' onerror="this.src='cover.png'"></div><button class='btn-audio' onclick="playAudio('ha.mp3')">🔊 ha</button><button class='btn-audio' onclick="playAudio('hi.mp3')">🔊 hi</button></div><div class='latihan'>Latihan: Melengkapi kata ...-jan, ...-di-ah, ...-dung <br><input type='text'></div>
-  <div class="latihan"><b>💾 Progress HP:</b> <span id="statusProgress">Belum selesai</span><br><small>Progress otomatis kesimpen di HP kamu (localStorage). Bisa offline!</small></div>
+*{box-sizing:border-box}body{margin:0;font-family:Nunito,system-ui;background:#fffbeb}
+.hero{height:42vh;background:url('bab2.png') center/cover no-repeat;position:relative;display:flex;align-items:flex-end;justify-content:center}
+.hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,.65),transparent)}
+.hero h1{position:relative;z-index:2;color:white;text-align:center;padding:16px;font-size:1.9rem;text-shadow:0 2px 8px rgba(0,0,0,.6)}
+.wrap{max-width:900px;margin:-28px auto 0;background:white;border-radius:22px;box-shadow:0 10px 30px rgba(0,0,0,.12);padding:18px;position:relative;z-index:3}
+.top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.btn{border:none;padding:8px 14px;border-radius:20px;font-weight:700;cursor:pointer}
+.btn-back{background:#f3f4f6} .btn-ok{background:#22c55e;color:white}
+.card{background:#fffbeb;border:2px dashed #fcd34d;border-radius:16px;padding:14px;margin:12px 0}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:10px}
+.item{text-align:center;background:white;border-radius:12px;padding:6px;border:1px solid #fde68a}
+.item img{width:100%;height:90px;object-fit:cover;border-radius:8px;background:#fef3c7}
+.item span{font-size:.8rem;display:block;margin-top:4px}
+.aud{background:#4f46e5;color:white;border:none;padding:7px 12px;border-radius:20px;margin:4px;cursor:pointer;font-weight:600}
+.aud:hover{background:#4338ca}
+.lat{background:#e0f2fe;border-left:4px solid #0ea5e9;padding:10px;border-radius:8px;margin:10px 0}
+.prog{height:8px;background:#eee;border-radius:4px;overflow:hidden} .bar{height:100%;background:#22c55e;width:0%;transition:.4s}
+</style></head><body>
+<div class="hero"><h1>Bab 2 - Ayo Bermain!<br><small style="font-size:.9rem">Hujan turun, Caca dan Cika bermain, engklek, petak umpet.</small></h1></div>
+<div class="wrap">
+<div class="top"><a href="index.html" class="btn btn-back">⬅️ Kembali</a><button class="btn btn-ok" onclick="save( 2 )">✅ Tandai Selesai</button></div>
+<div class="prog"><div id="bar" class="bar"></div></div>
+<div class="card"><h3>📖 Cerita & Foto Asli</h3><p>Hujan turun, Caca dan Cika bermain, engklek, petak umpet.</p><div class="grid"><div class="item"><img src="hujan.png" onerror="this.style.display='none'"><span>hujan</span></div><div class="item"><img src="hijau.png" onerror="this.style.display='none'"><span>hijau</span></div><div class="item"><img src="caca.png" onerror="this.style.display='none'"><span>caca</span></div><div class="item"><img src="cika.png" onerror="this.style.display='none'"><span>cika</span></div><div class="item"><img src="cecak.png" onerror="this.style.display='none'"><span>cecak</span></div><div class="item"><img src="gajah.png" onerror="this.style.display='none'"><span>gajah</span></div><div class="item"><img src="kelinci.png" onerror="this.style.display='none'"><span>kelinci</span></div><div class="item"><img src="bola.png" onerror="this.style.display='none'"><span>bola</span></div><div class="item"><img src="pagi_sibuk.png" onerror="this.style.display='none'"><span>pagi sibuk</span></div><div class="item"><img src="pasar.png" onerror="this.style.display='none'"><span>pasar</span></div></div><div style="margin-top:10px"><button class="aud" onclick="playAudio('hujan.mp3')">🔊 hujan</button> <button class="aud" onclick="playAudio('hijau.mp3')">🔊 hijau</button> <button class="aud" onclick="playAudio('ca.mp3')">🔊 ca</button> <button class="aud" onclick="playAudio('cerita_bab2_caca.mp3')">🔊 cerita bab2 caca</button> <button class="aud" onclick="playAudio('ha.mp3')">🔊 ha</button> <button class="aud" onclick="playAudio('hi.mp3')">🔊 hi</button> <button class="aud" onclick="playAudio('huruf_c.mp3')">🔊 huruf c</button> </div></div>
+<div class="card"><h3>✏️ Latihan</h3><div class="lat"><p>Lengkapi: hu-...an jadi hujan <input type=text></p><p>Apa permainan favoritmu? <textarea></textarea></p></div></div>
+<div class="card"><p id="stat">📱 Belum selesai</p></div>
 </div>
 <script>
-function playAudio(file){
-  let audio = new Audio(file);
-  audio.onerror = ()=> alert('File '+file+' belum ada, upload dulu bro!');
-  audio.play();
-}
-function saveProgress(bab){
-  localStorage.setItem('bab'+bab+'_selesai','ya');
-  localStorage.setItem('last_bab',bab);
-  document.getElementById('statusProgress').innerText='✅ Selesai - Tersimpan di HP!';
-  document.getElementById('progress').style.width='100%';
-  if('serviceWorker' in navigator) alert('Progress Bab '+bab+' kesimpen di HP! Bisa offline.');
-}
-window.onload=()=>{
-  let s=localStorage.getItem('bab2_selesai');
-  if(s){document.getElementById('statusProgress').innerText='✅ Selesai - Tersimpan di HP!';document.getElementById('progress').style.width='100%';}
-  // register SW
-  if('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js');
-}
-function checkImg(img){ img.onerror = ()=>{ img.src='cover.png'; img.style.opacity='0.5'; } }
-</script>
-</body>
-</html>
+function playAudio(f){let a=new Audio(f);a.onerror=()=>alert('Audio '+f+' belum ada');a.play();}
+function save(n){localStorage.setItem('bab'+n+'_selesai','ya');document.getElementById('stat').textContent='✅ Selesai - Tersimpan di HP!';document.getElementById('bar').style.width='100%';alert('Bab '+n+' selesai! Progress kesimpen!');}
+window.onload=()=>{if(localStorage.getItem('bab2_selesai')){document.getElementById('stat').textContent='✅ Selesai';document.getElementById('bar').style.width='100%';} if('serviceWorker' in navigator)navigator.serviceWorker.register('service-worker.js');}
+</script></body></html>
