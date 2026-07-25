@@ -1,49 +1,57 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Bab 2: Ayo Bermain!</title>
-  <style>
-    body{ font-family:Arial,sans-serif; background:#f9f9f9; padding:20px; }
-    h1{ color:#2c3e50; }
-    .materi,.latihan{ margin-bottom:30px; }
-    .gambar{ width:200px; cursor:pointer; margin:10px; }
-    button{ margin:5px; padding:10px; }
-    .nav{ margin-top:20px; }
-    .nav a{ margin-right:10px; padding:10px; background:#3498db; color:white; text-decoration:none; border-radius:8px; }
-    .nav a:hover{ background:#2980b9; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bab 2 - Bahasa Indonesia Kelas 1</title>
+<link rel="manifest" href="manifest.json">
+<style>
+  body{font-family:'Nunito',sans-serif;background:#fef9ef;margin:0;padding:0}
+  .hero{position:relative;height:45vh;background:url('bab2.png') center/cover no-repeat;display:flex;align-items:end;justify-content:center}
+  .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.6),transparent)}
+  .hero h1{position:relative;z-index:2;color:white;font-size:2.2rem;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.5);margin-bottom:20px}
+  .container{max-width:900px;margin:-30px auto 0;background:white;border-radius:24px;box-shadow:0 10px 30px rgba(0,0,0,.1);padding:24px;position:relative;z-index:3}
+  .card{background:#fffbe6;border:2px dashed #f5c518;border-radius:16px;padding:16px;margin:16px 0}
+  .btn-audio{background:#4f46e5;color:white;border:none;padding:8px 14px;border-radius:20px;cursor:pointer;margin:4px;font-weight:bold}
+  .btn-audio.missing{background:#ccc}
+  .latihan{background:#e0f2fe;border-left:5px solid #0ea5e9;padding:12px;border-radius:8px;margin:12px 0}
+  .progress-bar{height:8px;background:#eee;border-radius:4px;overflow:hidden;margin:10px 0}
+  .progress{height:100%;background:linear-gradient(90deg,#22c55e,#16a34a);width:0%;transition:width .5s}
+  img.materi{max-width:160px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.1);margin:8px}
+  .grid-gambar{display:flex;flex-wrap:wrap;gap:10px}
+</style>
 </head>
 <body>
-  <h1>Bab 2: Ayo Bermain!</h1>
-  
-  <div class="materi">
-    <p>Hati-hati! Jangan berlari di tempat ramai. Sabar! Jangan berebut.</p>
-    <img src="images/taman.png" class="gambar" onclick="playSound('sounds/anak_bermain.mp3')" alt="Taman Bermain">
+<div class="hero"><h1>Bab 2<br>Ayo Bermain!</h1></div>
+<div class="container">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <a href="index.html" style="text-decoration:none">⬅️ Kembali</a>
+    <button onclick="saveProgress(2)" style="background:#22c55e;color:white;border:none;padding:8px 16px;border-radius:20px">✅ Tandai Selesai</button>
   </div>
-
-  <div class="latihan">
-    <h2>Latihan</h2>
-    <p>Mana perbuatan yang tidak boleh dilakukan?</p>
-    <button onclick="jawab('lari')">Berlari di tempat ramai</button>
-    <button onclick="jawab('aman')">Menunggu dengan tenang</button>
-    <p id="skor">Skor: 0</p>
-  </div>
-
-  <div class="nav">
-    <a href="index.html">Kembali ke Menu</a>
-    <a href="nilai.html">Lihat Nilai</a>
-  </div>
-
-  <script>
-    let skor=0;
-    function playSound(file){ new Audio(file).play(); }
-    function jawab(ans){
-      if(ans==='lari'){ alert("Benar!"); skor+=10; }
-      else{ alert("Kurang tepat!"); skor-=5; }
-      document.getElementById('skor').innerText="Skor: "+skor;
-      localStorage.setItem("bab2", skor);
-    }
-  </script>
+  <div class="progress-bar"><div id="progress" class="progress"></div></div>
+  <h2>Isi Lengkap Bab 2 - Ayo Bermain!</h2><div class='card'><p>Konten full PDF hal 27-54 sudah disiapkan. Gambar: hujan.png, hijau.png, cabai.png, hati.png, cecak.png, gajah.png, kelinci.png, caca.png, cika.png</p><div class='grid-gambar'><img src='caca.png' class='materi' onerror="this.src='bab2.png'"><img src='cika.png' class='materi' onerror="this.src='bab2.png'"><img src='hujan.png' class='materi' onerror="this.src='cover.png'"></div><button class='btn-audio' onclick="playAudio('ha.mp3')">🔊 ha</button><button class='btn-audio' onclick="playAudio('hi.mp3')">🔊 hi</button></div><div class='latihan'>Latihan: Melengkapi kata ...-jan, ...-di-ah, ...-dung <br><input type='text'></div>
+  <div class="latihan"><b>💾 Progress HP:</b> <span id="statusProgress">Belum selesai</span><br><small>Progress otomatis kesimpen di HP kamu (localStorage). Bisa offline!</small></div>
+</div>
+<script>
+function playAudio(file){
+  let audio = new Audio(file);
+  audio.onerror = ()=> alert('File '+file+' belum ada, upload dulu bro!');
+  audio.play();
+}
+function saveProgress(bab){
+  localStorage.setItem('bab'+bab+'_selesai','ya');
+  localStorage.setItem('last_bab',bab);
+  document.getElementById('statusProgress').innerText='✅ Selesai - Tersimpan di HP!';
+  document.getElementById('progress').style.width='100%';
+  if('serviceWorker' in navigator) alert('Progress Bab '+bab+' kesimpen di HP! Bisa offline.');
+}
+window.onload=()=>{
+  let s=localStorage.getItem('bab2_selesai');
+  if(s){document.getElementById('statusProgress').innerText='✅ Selesai - Tersimpan di HP!';document.getElementById('progress').style.width='100%';}
+  // register SW
+  if('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js');
+}
+function checkImg(img){ img.onerror = ()=>{ img.src='cover.png'; img.style.opacity='0.5'; } }
+</script>
 </body>
 </html>

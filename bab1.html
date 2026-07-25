@@ -1,75 +1,153 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Bab 1: Bunyi Apa?</title>
-  <style>
-    body { font-family: Comic Sans MS, Arial, sans-serif; background:#f9f9f9; padding:20px; }
-    h1 { color:#2c3e50; }
-    .materi,.latihan { margin-bottom:30px; }
-    .gambar { width:150px; cursor:pointer; margin:10px; }
-    button { margin:5px; padding:10px; }
-    .nav { margin-top:20px; }
-    .nav a { margin-right:10px; padding:10px; background:#3498db; color:white; text-decoration:none; border-radius:8px; }
-    .nav a:hover { background:#2980b9; }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bab 1 - Bahasa Indonesia Kelas 1</title>
+<link rel="manifest" href="manifest.json">
+<style>
+  body{font-family:'Nunito',sans-serif;background:#fef9ef;margin:0;padding:0}
+  .hero{position:relative;height:45vh;background:url('bab1.png') center/cover no-repeat;display:flex;align-items:end;justify-content:center}
+  .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.6),transparent)}
+  .hero h1{position:relative;z-index:2;color:white;font-size:2.2rem;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.5);margin-bottom:20px}
+  .container{max-width:900px;margin:-30px auto 0;background:white;border-radius:24px;box-shadow:0 10px 30px rgba(0,0,0,.1);padding:24px;position:relative;z-index:3}
+  .card{background:#fffbe6;border:2px dashed #f5c518;border-radius:16px;padding:16px;margin:16px 0}
+  .btn-audio{background:#4f46e5;color:white;border:none;padding:8px 14px;border-radius:20px;cursor:pointer;margin:4px;font-weight:bold}
+  .btn-audio.missing{background:#ccc}
+  .latihan{background:#e0f2fe;border-left:5px solid #0ea5e9;padding:12px;border-radius:8px;margin:12px 0}
+  .progress-bar{height:8px;background:#eee;border-radius:4px;overflow:hidden;margin:10px 0}
+  .progress{height:100%;background:linear-gradient(90deg,#22c55e,#16a34a);width:0%;transition:width .5s}
+  img.materi{max-width:160px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.1);margin:8px}
+  .grid-gambar{display:flex;flex-wrap:wrap;gap:10px}
+</style>
 </head>
 <body>
-  <h1>Bab 1: Bunyi Apa?</h1>
+<div class="hero"><h1>Bab 1<br>Bunyi Apa?</h1></div>
+<div class="container">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <a href="index.html" style="text-decoration:none">⬅️ Kembali</a>
+    <button onclick="saveProgress(1)" style="background:#22c55e;color:white;border:none;padding:8px 16px;border-radius:20px">✅ Tandai Selesai</button>
+  </div>
+  <div class="progress-bar"><div id="progress" class="progress"></div></div>
   
-  <div class="materi">
-    <p><strong>Duk! Duk! Duk!</strong> Itu bola Boni. Bola Boni biru.</p>
-    <img src="images/bola.png" class="gambar" onclick="playSound('sounds/bola.mp3')" alt="Bola Boni">
-    <img src="images/batu.png" class="gambar" onclick="playSound('sounds/batu.mp3')" alt="Batu">
-    <img src="images/sapi.png" class="gambar" onclick="playSound('sounds/sapi.mp3')" alt="Sapi">
-  </div>
+<h2>📖 Cerita: Bola Boni Biru</h2>
+<div class="card">
+<p><b>Duk! Duk! Bunyi apa itu?</b><br>Itu bola Boni. Bola Boni biru. Boni bermain bola di taman.</p>
+<div class="grid-gambar">
+<img class="materi" src="bola.png" onerror="this.src='bab1.png'" alt="bola">
+<img class="materi" src="boni.png" onerror="this.src='cover.png'" alt="boni">
+<img class="materi" src="taman.png" onerror="this.src='cover.png'" alt="taman">
+</div>
+<button class="btn-audio" onclick="playAudio('bola.mp3')">🔊 bola</button>
+<button class="btn-audio" onclick="playAudio('eja_bola.mp3')">🔊 B-O-L-A</button>
+<button class="btn-audio" onclick="playAudio('baju.mp3')">🔊 baju</button>
+<button class="btn-audio" onclick="playAudio('buku.mp3')">🔊 buku</button>
+</div>
 
-  <div class="latihan">
-    <h2>Latihan 1</h2>
-    <p>Apa warna bola Boni?</p>
-    <button onclick="jawab('biru')">Biru</button>
-    <button onclick="jawab('merah')">Merah</button>
-    <p id="skor">Skor: 0</p>
-  </div>
+<h3>🎧 Bunyi Apa?</h3>
+<div class="card">
+<p>Aduh! Bola jadi basah. Bunyi batu, bebek, burung...</p>
+<div class="grid-gambar">
+<img class="materi" src="batu.png" onerror="this.src='cover.png'">
+<img class="materi" src="bebek.png" onerror="this.src='cover.png'">
+<img class="materi" src="burung.png" onerror="this.src='cover.png'">
+</div>
+<button class="btn-audio" onclick="playAudio('batu.mp3')">🔊 batu</button>
+<button class="btn-audio" onclick="playAudio('bebek.mp3')">🔊 bebek</button>
+<button class="btn-audio" onclick="playAudio('burung.png')">🔊 burung (gambar)</button>
+<button class="btn-audio" onclick="playAudio('ba.mp3')">🔊 ba</button>
+<button class="btn-audio" onclick="playAudio('be.mp3')">🔊 be</button>
+<button class="btn-audio" onclick="playAudio('bi.mp3')">🔊 bi</button>
+</div>
 
-  <div class="latihan">
-    <h2>Latihan 2</h2>
-    <p>Bola Boni berbunyi apa?</p>
-    <button onclick="jawab2('duk')">Duk Duk Duk</button>
-    <button onclick="jawab2('tok')">Tok Tok Tok</button>
-    <p id="skor2">Skor: 0</p>
-  </div>
+<h3>❓ Latihan - Jawab Pertanyaan (PDF Hal 7)</h3>
+<div class="latihan">
+<p>1. Apa warna bola Boni? <br><input type="text" placeholder="Jawab..."></p>
+<p>2. Di mana Boni mengejar bolanya? <br><input type="text"></p>
+<p>3. Di mana bola Boni jatuh? <br><input type="text"></p>
+<p>4. Siapa yang bermain dengan bola Boni? <br><input type="text"></p>
+<p>5. Ceritakan kembali mengapa Boni kehilangan bolanya. <br><textarea rows="2" style="width:100%"></textarea></p>
+</div>
 
-  <div class="latihan">
-    <h2>Latihan Huruf B</h2>
-    <button onclick="playSound('sounds/ba.mp3')">ba</button>
-    <button onclick="playSound('sounds/be.mp3')">be</button>
-    <button onclick="playSound('sounds/bi.mp3')">bi</button>
-    <button onclick="playSound('sounds/bo.mp3')">bo</button>
-    <button onclick="playSound('sounds/bu.mp3')">bu</button>
-  </div>
+<h3>🔤 Bahas Bahasa - Huruf Kapital & Kecil (PDF Hal 9)</h3>
+<div class="card">
+<p>Aa Bb Cc Dd Ee Ff Gg Hh Ii Jj Kk Ll Mm Nn Oo Pp Qq Rr Ss Tt Uu Vv Ww Xx Yy Zz</p>
+<button class="btn-audio" onclick="playAudio('huruf_b.mp3')">🔊 B</button>
+<button class="btn-audio" onclick="playAudio('huruf_c.mp3')">🔊 C</button>
+<button class="btn-audio" onclick="playAudio('huruf_a.mp3')">🔊 A (kalo belum ada, upload)</button>
+<p><small>File kurang: huruf_a.mp3, huruf_d.mp3, huruf_e.mp3 ... sampai huruf_z.mp3 - cek txt kekurangan</small></p>
+</div>
 
-  <div class="nav">
-    <a href="index.html">🏠 Kembali ke Menu</a>
-    <a href="nilai.html">📊 Lihat Nilai</a>
-  </div>
+<h3>🎨 Membuat Kartu Nama (PDF Hal 11)</h3>
+<div class="card"><p>Tulis nama kalian, gambar benda kesukaan di baliknya.</p>
+<img class="materi" src="caca.png" onerror="this.src='cover.png'"><img class="materi" src="cika.png" onerror="this.src='cover.png'">
+</div>
 
-  <script>
-    let skor=0, skor2=0;
-    function playSound(file){ new Audio(file).play(); }
-    function jawab(ans){
-      if(ans==='biru'){ alert("Benar!"); skor+=10; }
-      else{ alert("Salah!"); skor-=5; }
-      document.getElementById('skor').innerText="Skor: "+skor;
-      localStorage.setItem("bab1", skor);
-    }
-    function jawab2(ans){
-      if(ans==='duk'){ alert("Benar!"); skor2+=10; }
-      else{ alert("Salah!"); skor2-=5; }
-      document.getElementById('skor2').innerText="Skor: "+skor2;
-      // gabungkan skor latihan 1 + 2
-      localStorage.setItem("bab1", skor+skor2);
-    }
-  </script>
+<h3>🏙️ Pagi yang Sibuk (PDF Hal 13)</h3>
+<div class="card">
+<p>Amati gambar pasar yang sibuk.</p>
+<img class="materi" src="pasar.png" style="max-width:100%" onerror="this.src='bab1.png'">
+<p>1. Apa yang diceritakan gambar? <input type="text"><br>2. Ada berapa orang? <input type="number"></p>
+</div>
+
+<h3>👂 Bunyi Siang & Malam (PDF Hal 15-17)</h3>
+<div class="card">
+<p>Aku melihat dengan mataku, mencium dengan hidungku, merasa dengan lidahku, mendengar dengan telingaku, meraba dengan kulitku.</p>
+<button class="btn-audio" onclick="playAudio('eja_mata.mp3')">🔊 mata</button>
+<button class="btn-audio" onclick="playAudio('eja_lidah.mp3')">🔊 lidah</button>
+</div>
+
+<h3>🔤 Huruf Awal Binatang (PDF Hal 19)</h3>
+<div class="card">
+<div class="grid-gambar">
+<img src="burung.png" class="materi" onerror="this.src='cover.png'"><span>burung - b</span>
+<img src="bebek.png" class="materi" onerror="this.src='cover.png'"><span>bebek - b</span>
+<img src="beruang.png" class="materi" onerror="this.src='cover.png'"><span>beruang (kalo belum ada)</span>
+</div>
+</div>
+
+<h3>📚 Membaca Kartu Kata ba-bu-be (PDF Hal 21)</h3>
+<div class="card">
+<p>buku, balok, buaya, baju</p>
+<button class="btn-audio" onclick="playAudio('buku.mp3')">🔊 buku</button>
+<button class="btn-audio" onclick="playAudio('baju.mp3')">🔊 baju</button>
+<button class="btn-audio" onclick="playAudio('eja_buku.mp3')">🔊 eja buku</button>
+<button class="btn-audio" onclick="playAudio('eja_baju.mp3')">🔊 eja baju</button>
+<div class="latihan"><b>Latihan Tambahan (Gue Tambahin):</b><br>
+Susun huruf: u-k-u-b jadi? <input type="text" placeholder="buku"><br>
+Susun huruf: j-u-b-a jadi? <input type="text" placeholder="baju"><br>
+Sebutkan 3 kata berawalan ba-: <input type="text"><br>
+</div>
+</div>
+
+<h3>📓 Jurnal Membaca (PDF Hal 25)</h3>
+<div class="latihan">
+Nama: <input type="text"><br>Judul Buku: <input type="text"><br>
+Biji apa di rumahmu? <input type="text">
+</div>
+
+  <div class="latihan"><b>💾 Progress HP:</b> <span id="statusProgress">Belum selesai</span><br><small>Progress otomatis kesimpen di HP kamu (localStorage). Bisa offline!</small></div>
+</div>
+<script>
+function playAudio(file){
+  let audio = new Audio(file);
+  audio.onerror = ()=> alert('File '+file+' belum ada, upload dulu bro!');
+  audio.play();
+}
+function saveProgress(bab){
+  localStorage.setItem('bab'+bab+'_selesai','ya');
+  localStorage.setItem('last_bab',bab);
+  document.getElementById('statusProgress').innerText='✅ Selesai - Tersimpan di HP!';
+  document.getElementById('progress').style.width='100%';
+  if('serviceWorker' in navigator) alert('Progress Bab '+bab+' kesimpen di HP! Bisa offline.');
+}
+window.onload=()=>{
+  let s=localStorage.getItem('bab1_selesai');
+  if(s){document.getElementById('statusProgress').innerText='✅ Selesai - Tersimpan di HP!';document.getElementById('progress').style.width='100%';}
+  // register SW
+  if('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js');
+}
+function checkImg(img){ img.onerror = ()=>{ img.src='cover.png'; img.style.opacity='0.5'; } }
+</script>
 </body>
 </html>

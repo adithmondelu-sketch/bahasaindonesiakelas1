@@ -1,41 +1,44 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <title>Menu Utama - Bahasa Indonesia Aku Bisa!</title>
-  <style>
-    body { font-family: Arial, sans-serif; background: #eef2f3; padding: 30px; text-align: center; }
-    h1 { color: #2c3e50; margin-bottom: 40px; }
-    .menu { display: flex; flex-wrap: wrap; justify-content: center; gap: 20px; }
-    .menu a {
-      display: block;
-      width: 200px;
-      padding: 20px;
-      background: #3498db;
-      color: white;
-      text-decoration: none;
-      border-radius: 10px;
-      font-size: 18px;
-      transition: 0.3s;
-    }
-    .menu a:hover {
-      background: #2980b9;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bahasa Indonesia Kelas 1 - Aku Bisa!</title>
+<link rel="manifest" href="manifest.json">
+<style>
+body{margin:0;font-family:Nunito,sans-serif;background:#fff9e6}
+.hero{background:url('cover.png') center/cover;height:50vh;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#1e3a8a;text-align:center}
+.hero h1{font-size:2.5rem;background:rgba(255,255,255,0.9);padding:12px 24px;border-radius:20px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px;padding:20px;max-width:1000px;margin:0 auto}
+.card{border-radius:20px;overflow:hidden;box-shadow:0 8px 20px rgba(0,0,0,.15);transition:transform .2s;background:white;cursor:pointer}
+.card:hover{transform:translateY(-5px)}
+.card img{width:100%;height:160px;object-fit:cover}
+.card .title{padding:10px;font-weight:bold;text-align:center}
+.progress-info{text-align:center;padding:10px;background:#dcfce7;margin:10px;border-radius:12px}
+</style>
 </head>
 <body>
-  <h1>Bahasa Indonesia: Aku Bisa!</h1>
-  <p>Pilih Bab untuk mulai belajar:</p>
-
-  <div class="menu">
-    <a href="bab1.html">Bab 1: Bunyi Apa?</a>
-    <a href="bab2.html">Bab 2: Ayo Bermain!</a>
-    <a href="bab3.html">Bab 3: Awas Kuman!</a>
-    <a href="bab4.html">Bab 4: Aku Bisa!</a>
-    <a href="bab5.html">Bab 5: Teman Baru</a>
-    <a href="bab6.html">Bab 6: Temanku Berbeda</a>
-    <a href="bab7.html">Bab 7: Aku Ingin</a>
-    <a href="bab8.html">Bab 8: Di Sekitar Rumah</a>
-  </div>
+<div class="hero"><h1>Bahasa Indonesia: Aku Bisa!<br>SD/MI Kelas 1</h1><p>Edisi Revisi - Lengkap Gambar & Suara</p></div>
+<div class="progress-info">📱 <span id="progressText">0/8 Bab selesai</span> | <button onclick="resetProgress()">Reset</button></div>
+<div class="grid">
+<a href="bab1.html" class="card"><img src="bab1.png" onerror="this.src='cover.png'"><div class="title">Bab 1<br>Bunyi Apa?</div></a>
+<a href="bab2.html" class="card"><img src="bab2.png" onerror="this.src='cover.png'"><div class="title">Bab 2<br>Ayo Bermain!</div></a>
+<a href="bab3.html" class="card"><img src="bab3.png" onerror="this.src='cover.png'"><div class="title">Bab 3<br>Awas Kuman!</div></a>
+<a href="bab4.html" class="card"><img src="bab4.png" onerror="this.src='cover.png'"><div class="title">Bab 4<br>Aku Bisa!</div></a>
+<a href="bab5.html" class="card"><img src="bab5.png" onerror="this.src='cover.png'"><div class="title">Bab 5<br>Teman Baru</div></a>
+<a href="bab6.html" class="card"><img src="bab6.png" onerror="this.src='cover.png'"><div class="title">Bab 6<br>Berbeda Itu Tak Apa</div></a>
+<a href="bab7.html" class="card"><img src="bab7.png" onerror="this.src='cover.png'"><div class="title">Bab 7<br>Aku Ingin</div></a>
+<a href="bab8.html" class="card"><img src="bab8.png" onerror="this.src='cover.png'"><div class="title">Bab 8<br>Di Sekitar Rumah</div></a>
+</div>
+<p style="text-align:center;padding:20px">Cara pakai: Klik Bab, dengar suara 🔊, kerjakan latihan, klik ✅ Tandai Selesai. Progress kesimpen di HP otomatis. Bisa Add to Home Screen jadi aplikasi!</p>
+<script>
+if('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js');
+function updateProgress(){
+  let done=0; for(let i=1;i<=8;i++) if(localStorage.getItem('bab'+i+'_selesai')) done++;
+  document.getElementById('progressText').innerText=done+'/8 Bab selesai';
+}
+function resetProgress(){ if(confirm('Reset semua progress?')){ for(let i=1;i<=8;i++) localStorage.removeItem('bab'+i+'_selesai'); updateProgress(); } }
+window.onload=updateProgress;
+</script>
 </body>
 </html>

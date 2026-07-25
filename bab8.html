@@ -1,19 +1,57 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bab 8 - Bahasa Indonesia Kelas 1</title>
+<link rel="manifest" href="manifest.json">
+<style>
+  body{font-family:'Nunito',sans-serif;background:#fef9ef;margin:0;padding:0}
+  .hero{position:relative;height:45vh;background:url('bab8.png') center/cover no-repeat;display:flex;align-items:end;justify-content:center}
+  .hero::after{content:'';position:absolute;inset:0;background:linear-gradient(to top,rgba(0,0,0,0.6),transparent)}
+  .hero h1{position:relative;z-index:2;color:white;font-size:2.2rem;text-align:center;text-shadow:0 2px 8px rgba(0,0,0,.5);margin-bottom:20px}
+  .container{max-width:900px;margin:-30px auto 0;background:white;border-radius:24px;box-shadow:0 10px 30px rgba(0,0,0,.1);padding:24px;position:relative;z-index:3}
+  .card{background:#fffbe6;border:2px dashed #f5c518;border-radius:16px;padding:16px;margin:16px 0}
+  .btn-audio{background:#4f46e5;color:white;border:none;padding:8px 14px;border-radius:20px;cursor:pointer;margin:4px;font-weight:bold}
+  .btn-audio.missing{background:#ccc}
+  .latihan{background:#e0f2fe;border-left:5px solid #0ea5e9;padding:12px;border-radius:8px;margin:12px 0}
+  .progress-bar{height:8px;background:#eee;border-radius:4px;overflow:hidden;margin:10px 0}
+  .progress{height:100%;background:linear-gradient(90deg,#22c55e,#16a34a);width:0%;transition:width .5s}
+  img.materi{max-width:160px;border-radius:12px;box-shadow:0 4px 10px rgba(0,0,0,.1);margin:8px}
+  .grid-gambar{display:flex;flex-wrap:wrap;gap:10px}
+</style>
+</head>
+<body>
+<div class="hero"><h1>Bab 8<br>Di Sekitar Rumah</h1></div>
+<div class="container">
+  <div style="display:flex;justify-content:space-between;align-items:center">
+    <a href="index.html" style="text-decoration:none">⬅️ Kembali</a>
+    <button onclick="saveProgress(8)" style="background:#22c55e;color:white;border:none;padding:8px 16px;border-radius:20px">✅ Tandai Selesai</button>
+  </div>
+  <div class="progress-bar"><div id="progress" class="progress"></div></div>
+  <h2>Bab 8 - Di Sekitar Rumah (Hal 195-221)</h2><div class='card'><p>Bayu, peta rumah, polisi, satpam, hati-hati di luar rumah</p><button class='btn-audio' onclick="playAudio('rumah.mp3')">🔊 rumah</button><button class='btn-audio' onclick="playAudio('polisi.mp3')">🔊 polisi (upload dulu)</button></div>
+  <div class="latihan"><b>💾 Progress HP:</b> <span id="statusProgress">Belum selesai</span><br><small>Progress otomatis kesimpen di HP kamu (localStorage). Bisa offline!</small></div>
+</div>
 <script>
-  let skor=0;
-  function jawab(){
-    let isi=document.getElementById('jawaban').value;
-    if(isi.trim()!==""){ alert("Bagus! Di sekitar rumah ada "+isi); skor+=10; }
-    else{ alert("Tulis dulu!"); skor-=5; }
-    document.getElementById('skor').innerText="Skor: "+skor;
-    localStorage.setItem("bab8", skor);
-
-    // Setelah jawab, cek total skor semua bab
-    let total=0;
-    for(let i=1;i<=8;i++){
-      let s=localStorage.getItem("bab"+i) || 0;
-      total+=parseInt(s);
-    }
-    // Jika sudah selesai bab8, langsung ke selamat.html
-    setTimeout(()=>{ window.location.href="selamat.html"; },1000);
-  }
+function playAudio(file){
+  let audio = new Audio(file);
+  audio.onerror = ()=> alert('File '+file+' belum ada, upload dulu bro!');
+  audio.play();
+}
+function saveProgress(bab){
+  localStorage.setItem('bab'+bab+'_selesai','ya');
+  localStorage.setItem('last_bab',bab);
+  document.getElementById('statusProgress').innerText='✅ Selesai - Tersimpan di HP!';
+  document.getElementById('progress').style.width='100%';
+  if('serviceWorker' in navigator) alert('Progress Bab '+bab+' kesimpen di HP! Bisa offline.');
+}
+window.onload=()=>{
+  let s=localStorage.getItem('bab8_selesai');
+  if(s){document.getElementById('statusProgress').innerText='✅ Selesai - Tersimpan di HP!';document.getElementById('progress').style.width='100%';}
+  // register SW
+  if('serviceWorker' in navigator) navigator.serviceWorker.register('service-worker.js');
+}
+function checkImg(img){ img.onerror = ()=>{ img.src='cover.png'; img.style.opacity='0.5'; } }
 </script>
+</body>
+</html>
