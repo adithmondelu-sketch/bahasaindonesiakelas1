@@ -1,0 +1,15 @@
+{
+  "name": "Bahasa Indonesia Kelas 1 - Aku Bisa!",
+  "short_name": "Aku Bisa!",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#fff9e6",
+  "theme_color": "#4f46e5",
+  "icons": [
+    {
+      "src": "cover.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
